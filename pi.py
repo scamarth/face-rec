@@ -3,10 +3,12 @@ import numpy
 import sys,os
 
 me = "me"
+dad = "dad"
 hhar_file = r"C:\Users\User\OneDrive\Desktop\Open CV with Python\facial reconition\haarcascade_frontalface_default.xml"
 datasets = "datasets"
 sub_data = "samarth"
-path = os.path.join(datasets,sub_data)
+sub_data2 = "dad"
+path = os.path.join(datasets,sub_data,sub_data2)
 if not os.path.isdir(path):
     os.mkdir(path)
 (width,height) = (130,100)
