@@ -6,7 +6,7 @@ print("recognising face,please be in sufficient lights")
 (images,labels,names,id) = ([],[],[],0)
 for (subdirs, dirs, files) in os.walk(datasets):
     for subdir in dirs:
-        names[id] = subdirs
+        names.append(subdirs)
         subjectpath = os.path.join(datasets,subdir)
         for filename in os.listdir(subjectpath):
             path = subjectpath + "/" + filename
@@ -30,7 +30,7 @@ while True:
     faces = face_cascade.detectMultiScale(gray,1.3,5)
     for (x,y,w,h) in faces:
         cv2.rectangle(im,(x,y),(x + w, y + h), (255, 69, 0,), 2)
-        face = gray[y:y,+ h, x:x + w]
+        face = gray[y:y + h, x:x + w]
         face_resize = cv2.resize(face,(width,height))
 
         prediction = model.predict(face_resize)
@@ -42,6 +42,6 @@ while True:
             cv2.putText(im, 'not recognised' %(names[prediction[0]],[prediction[1]]), (x-10,y-10),cv2.FONT_HERSHEY_PLAIN, 1, (0, 255, 0))
 
     cv2.imshow("#grrr mondays",im)
-    key = cv2.waitkey(10)
+    key = cv2.waitKey(10)
     if key == 27:
         break
